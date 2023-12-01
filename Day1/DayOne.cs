@@ -42,7 +42,6 @@ public class DayOne
         var line = reader.ReadLine();
 
         var sum = 0;
-        int count = 1;
 
         var dict = new Dictionary<string, int>
         {
@@ -68,10 +67,6 @@ public class DayOne
                 var lastDigit = int.TryParse(numbers[^1], out var last) ? last : dict[numbers[^1]];
 
                 sum += int.Parse($"{firstDigit}{lastDigit}");
-
-                _output.WriteLine($"Count: {count}, Line: {line}, Result: {int.Parse($"{firstDigit}{lastDigit}")}");
-
-                count++;
             }
 
             line = reader.ReadLine();
