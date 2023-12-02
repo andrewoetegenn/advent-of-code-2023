@@ -38,7 +38,22 @@ public class DayOne
     [Fact]
     public void PartOne_Refactored()
     {
+        using var reader = new StreamReader("./Day1/Input");
+        var line = reader.ReadLine();
 
+        var sum = 0;
+
+        while (line != null)
+        {
+            var firstDigit = Regex.Match(line, @"\d").Value;
+            var lastDigit = Regex.Match(line, @"\d", RegexOptions.RightToLeft).Value;
+
+            sum += int.Parse($"{firstDigit}{lastDigit}");
+
+            line = reader.ReadLine();
+        }
+
+        _output.WriteLine($"{sum}");
     }
 
     [Fact]
@@ -84,6 +99,35 @@ public class DayOne
     [Fact]
     public void PartTwo_Refactored()
     {
+        using var reader = new StreamReader("./Day1/Input");
+        var line = reader.ReadLine();
 
+        var sum = 0;
+
+        while (line != null)
+        {
+            var firstDigit = Regex.Match(line, @"\d|one|two|three|four|five|six|seven|eight|nine").Value;
+            var lastDigit = Regex.Match(line, @"\d|one|two|three|four|five|six|seven|eight|nine", RegexOptions.RightToLeft).Value;
+
+            sum += int.Parse($"{Parse(firstDigit)}{Parse(lastDigit)}");
+
+            line = reader.ReadLine();
+        }
+
+        _output.WriteLine($"{sum}");
     }
+
+    public int Parse(string value) => value switch
+    {
+        "one" => 1,
+        "two" => 2,
+        "three" => 3,
+        "four" => 4,
+        "five" => 5,
+        "six" => 6,
+        "seven" => 7,
+        "eight" => 8,
+        "nine" => 9,
+        _ => int.Parse(value)
+    };
 }
