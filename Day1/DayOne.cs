@@ -36,6 +36,12 @@ public class DayOne
     }
 
     [Fact]
+    public void PartOne_Refactored()
+    {
+
+    }
+
+    [Fact]
     public void PartTwo()
     {
         using var reader = new StreamReader("./Day1/Input");
@@ -73,5 +79,11 @@ public class DayOne
         }
 
         _output.WriteLine($"{sum}");
+    }
+
+    [Fact]
+    public void PartTwo_Refactored()
+    {
+
     }
 }
